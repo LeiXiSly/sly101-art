@@ -1,0 +1,86 @@
+:root {
+    --bg: #0d0d0d;
+    --text: #e5e5e5;
+    --accent: #ffffff;
+    --muted: #666;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Times New Roman", serif; /* 关键：曹斐式衬线体 */
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* 导航样式 */
+nav {
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: space-between;
+    padding: 40px 60px; z-index: 100;
+    mix-blend-mode: difference; /* 文字会根据背景变色 */
+}
+
+.logo { font-size: 14px; letter-spacing: 3px; font-weight: bold; }
+.nav-links a { 
+    text-decoration: none; color: var(--text); 
+    font-size: 11px; margin-left: 40px; 
+    text-transform: uppercase; letter-spacing: 2px;
+}
+
+/* Hero Section */
+.hero {
+    height: 110vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    position: relative;
+}
+
+.hero-content { position: absolute; z-index: 2; text-align: center; }
+.hero h1 {
+    font-size: 9vw; font-weight: normal; font-style: italic;
+    line-height: 0.8; color: var(--accent);
+}
+
+.hero-video-wrap {
+    width: 65vw; height: 38vw;
+    overflow: hidden; opacity: 0.3;
+    transition: 1.5s filter cubic-bezier(0.16, 1, 0.3, 1);
+    filter: grayscale(100%);
+}
+
+.hero:hover .hero-video-wrap { opacity: 0.7; filter: grayscale(0%); }
+video { width: 100%; height: 100%; object-fit: cover; }
+
+/* 非线性作品网格 */
+.work-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    padding: 100px 60px;
+}
+
+.work-item { grid-area: var(--grid-area); margin-bottom: 120px; }
+.img-wrap { width: 100%; overflow: hidden; background: #1a1a1a; }
+.img-wrap img { width: 100%; display: block; transition: 1s transform ease; }
+.work-item:hover img { transform: scale(1.05); }
+
+.work-info { margin-top: 20px; border-left: 1px solid var(--muted); padding-left: 15px; }
+.work-info h3 { font-family: Arial, sans-serif; font-weight: normal; font-size: 18px; margin: 5px 0; }
+.year { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+
+/* About Section */
+.about-section { padding: 150px 60px; border-top: 1px solid #222; }
+.about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; }
+.label { display: block; font-size: 10px; color: var(--muted); letter-spacing: 3px; margin-bottom: 30px; }
+.bio p { font-size: 26px; line-height: 1.4; max-width: 900px; }
+.email-link { 
+    font-size: 2vw; color: var(--accent); 
+    text-decoration: none; border-bottom: 1px solid var(--muted);
+    transition: 0.3s;
+}
+.email-link:hover { border-bottom: 1px solid var(--accent); }
+
+footer { padding: 80px 60px; font-size: 9px; color: var(--muted); text-align: left; }
